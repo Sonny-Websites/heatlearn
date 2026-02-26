@@ -1,181 +1,146 @@
-// Set dynamic copyright year
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const yearElement = document.getElementById('year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
 
-    // Mobile hamburger menu toggle
-    const hamburgerMenu = document.getElementById('hamburgerMenu');
-    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
 
-    if (hamburgerMenu && navMenu) {
-        hamburgerMenu.addEventListener('click', function() {
-            hamburgerMenu.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen.toString());
         });
 
-        // Close menu when a link is clicked
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', function() {
-                hamburgerMenu.classList.remove('active');
-                navMenu.classList.remove('active');
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
 
-    // Form validation and submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+    const signupForm = document.getElementById('signupForm');
+    if (signupForm) {
+        signupForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const status = signupForm.querySelector('.form-status');
+            status.textContent = '';
 
-            // Clear previous error messages
-            ['name', 'email', 'message'].forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                const errorSpan = document.getElementById(fieldId + 'Error');
-                if (field) {
-                    field.classList.remove('error');
-                    if (errorSpan) {
-                        errorSpan.textContent = '';
+            const name = signupForm.querySelector('#signupName').value.trim();
+            const email = signupForm.querySelector('#signupEmail').value.trim();
+            const confirmed = signupForm.querySelector('input[name="notify_confirmed"]').checked;
+
+            if (!name || !email || !isValidEmail(email)) {
+                status.textContent = 'Please enter a valid name and email.';
+                return;
+            }
+
+            if (!confirmed) {
+                status.textContent = 'Please confirm the notification email.';
+                return;
+            }
+
+            const result = await submitForm(signupForm, { status });
+            if (result.ok) {
+                status.textContent = 'Thanks! You are signed up.';
+                signupForm.reset();
+            } else {
+                status.textContent = 'Sorry, something went wrong. Please try again.';
+            }
+        });
+    }
+
+    document.querySelectorAll('form.quiz').forEach((form) => {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            if (form.dataset.submitted === 'true') {
+                return;
+            }
+
+            const status = form.querySelector('.quiz-status');
+            status.textContent = '';
+
+            const questions = Array.from(form.querySelectorAll('.question'));
+            const unanswered = questions.filter((question) => !question.querySelector('input[type="radio"]:checked'));
+            if (unanswered.length > 0) {
+                status.textContent = 'Please answer all five questions before submitting.';
+                return;
+            }
+
+            let score = 0;
+            questions.forEach((question) => {
+                const correctOption = question.querySelector('.option[data-correct="true"]');
+                const selected = question.querySelector('input[type="radio"]:checked');
+
+                question.querySelectorAll('.option').forEach((option) => {
+                    option.classList.remove('is-correct', 'is-wrong');
+                    const explanation = option.querySelector('.explanation');
+                    if (explanation) {
+                        explanation.textContent = '';
+                    }
+                });
+
+                if (correctOption) {
+                    const correctInput = correctOption.querySelector('input');
+                    if (correctInput && correctInput.checked) {
+                        score += 1;
+                    }
+                    correctOption.classList.add('is-correct');
+                    const explanation = correctOption.querySelector('.explanation');
+                    if (explanation) {
+                        explanation.textContent = correctOption.dataset.explanation || '';
+                    }
+                }
+
+                if (selected && (!correctOption || selected !== correctOption.querySelector('input'))) {
+                    const selectedLabel = selected.closest('.option');
+                    if (selectedLabel) {
+                        selectedLabel.classList.add('is-wrong');
                     }
                 }
             });
 
-            // Validate form fields
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            let isValid = true;
-
-            if (!name) {
-                document.getElementById('name').classList.add('error');
-                document.getElementById('nameError').textContent = 'Name is required';
-                isValid = false;
+            const total = questions.length;
+            status.textContent = `Score: ${score}/${total}. Correct answers are highlighted in green.`;
+            form.dataset.submitted = 'true';
+            const submitButton = form.querySelector('button[type="submit"]');
+            if (submitButton) {
+                submitButton.textContent = 'Submitted';
+                submitButton.disabled = true;
             }
 
-            if (!email) {
-                document.getElementById('email').classList.add('error');
-                document.getElementById('emailError').textContent = 'Email is required';
-                isValid = false;
-            } else if (!isValidEmail(email)) {
-                document.getElementById('email').classList.add('error');
-                document.getElementById('emailError').textContent = 'Please enter a valid email address';
-                isValid = false;
+            const result = await submitForm(form, { extraFields: { score: `${score}/${total}` } });
+            if (!result.ok) {
+                status.textContent = 'Score saved locally, but we could not send your submission. Please try again later.';
             }
-
-            if (!message) {
-                document.getElementById('message').classList.add('error');
-                document.getElementById('messageError').textContent = 'Message is required';
-                isValid = false;
-            } else if (message.length < 10) {
-                document.getElementById('message').classList.add('error');
-                document.getElementById('messageError').textContent = 'Message must be at least 10 characters long';
-                isValid = false;
-            }
-
-            if (!isValid) {
-                return;
-            }
-
-            // Honeypot check
-            if (document.querySelector('input[name="_hp"]').value !== '') {
-                return;
-            }
-
-            // Show loading state
-            const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            submitBtn.setAttribute('aria-busy', 'true');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-
-            // Prepare form data
-            const formData = new FormData(this);
-            const data = new URLSearchParams();
-            for (let [key, value] of formData) {
-                data.append(key, value);
-            }
-
-            // Submit form
-            fetch('/__forms/contact', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: data
-            })
-            .then(response => response.json())
-            .then(result => {
-                // Redirect to thank you page
-                window.location.href = 'thank-you.html';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                submitBtn.setAttribute('aria-busy', 'false');
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
-                document.getElementById('responseMessage').innerHTML = '<p style="color: #e74c3c;">Sorry, there was an error sending your message. Please try again.</p>';
-            });
         });
-    }
-
-    // Newsletter form submission
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const emailInput = this.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-
-            if (!email || !isValidEmail(email)) {
-                alert('Please enter a valid email address');
-                return;
-            }
-
-            // Show success message
-            const button = this.querySelector('button');
-            const originalText = button.textContent;
-            button.textContent = 'Subscribed!';
-            button.disabled = true;
-
-            // Reset after 2 seconds
-            setTimeout(() => {
-                emailInput.value = '';
-                button.textContent = originalText;
-                button.disabled = false;
-            }, 2000);
-        });
-    }
+    });
 });
 
-// Helper function to validate email
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Scroll animation observer
-function animateOnScroll() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
+function submitForm(form, { status, extraFields } = {}) {
+    const formData = new FormData(form);
+    if (extraFields) {
+        Object.entries(extraFields).forEach(([key, value]) => {
+            formData.append(key, value);
         });
-    }, observerOptions);
+    }
+    const data = new URLSearchParams();
+    for (const [key, value] of formData.entries()) {
+        data.append(key, value);
+    }
 
-    document.querySelectorAll('[data-animate]').forEach(element => {
-        observer.observe(element);
-    });
+    return fetch(form.action, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: data
+    }).then((response) => ({ ok: response.ok })).catch(() => ({ ok: false }));
 }
 
-// Call scroll animation on page load
-document.addEventListener('DOMContentLoaded', animateOnScroll);
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
