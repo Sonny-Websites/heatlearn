@@ -3,168 +3,835 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Our landing page offers top-notch services and solutions for your business needs.">
-    <meta name="keywords" content="services, solutions, business">
-    <meta name="author" content="My Site">
-    <meta property="og:title" content="Welcome to Our Site">
-    <meta property="og:description" content="Discover amazing things with us. We provide top-notch services and solutions.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com">
-    <title>Landing Page - Premium Services & Solutions</title>
+    <meta name="description" content="HeatLearn offers free short beginner lessons on heat transfer and thermodynamics with quick quizzes.">
+    <title>HeatLearn | Free Heat Transfer Lessons</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "My Site",
-      "url": "https://example.com",
-      "description": "We provide top-notch services and solutions",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "Customer Service",
-        "availableLanguage": ["en"]
-      }
-    }
-    </script>
 </head>
 <body>
-    <header role="banner">
-        <nav role="navigation" aria-label="Main navigation">
-            <a href="index.html" class="logo">🏢 My Site</a>
-            <button class="hamburger" id="hamburgerMenu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul id="navMenu" class="nav-menu">
-                <li><a href="index.html" aria-current="page">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header" role="banner">
+        <div class="container nav">
+            <a class="brand" href="#top" aria-label="HeatLearn home">HeatLearn</a>
+            <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+            <nav class="nav-links" id="navLinks" aria-label="Lesson navigation">
+                <a href="#lesson-zeroth">Zeroth Law</a>
+                <a href="#lesson-convection">Basic Convection</a>
+                <a href="#lesson-heat-pumps">Heat Pumps</a>
+                <a href="#lesson-heat-capacity">Heat Capacity</a>
+                <a href="#lesson-radiation">Basic Radiation</a>
+            </nav>
+        </div>
     </header>
-    <section class="hero" role="region" aria-labelledby="heroHeading">
-        <div class="hero-wrapper">
-            <div class="hero-content">
-                <div class="hero-tag">Welcome to Excellence</div>
-                <h1 id="heroHeading">Exceptional Services Built for Your Success</h1>
-                <p class="hero-subtitle">Discover amazing things with us. We provide top-notch services and solutions that transform businesses and exceed expectations.</p>
-                <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary btn-large">Explore Features</a>
-                    <a href="#contact" class="btn btn-secondary btn-large">Get in Touch</a>
+
+    <main id="main">
+        <section class="hero" id="top">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <p class="eyebrow">Free short lessons</p>
+                    <h1>Heat transfer and thermodynamics made simple.</h1>
+                    <p class="lead">HeatLearn provides short, beginner-friendly lessons with clear equations and worked examples. Learn the basics fast, then check your understanding with quick quizzes.</p>
+                    <div class="hero-highlights">
+                        <div>
+                            <h3>What you get</h3>
+                            <ul>
+                                <li>Five focused lessons</li>
+                                <li>High-school level examples</li>
+                                <li>Instant quiz feedback</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Good for</h3>
+                            <ul>
+                                <li>AP Physics prep</li>
+                                <li>Intro engineering</li>
+                                <li>Curious learners</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <form id="signupForm" class="card form-card" method="post" action="/__forms/heatlearn-signup" novalidate>
+                    <h2>Get lesson updates</h2>
+                    <p class="muted">Short monthly updates. No spam.</p>
+                    <label for="signupName">Name</label>
+                    <input type="text" id="signupName" name="name" autocomplete="name" required>
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" autocomplete="email" required>
+                    <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                    <label class="checkbox">
+                        <input type="checkbox" name="notify_confirmed" required>
+                        I confirm notifications should be sent to yakovchaim@gmail.com
+                    </label>
+                    <button class="btn" type="submit">Sign up</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="lesson" id="lesson-zeroth">
+            <div class="container">
+                <div class="lesson-header">
+                    <p class="eyebrow">Lesson 1</p>
+                    <h2>Zeroth Law of Thermodynamics</h2>
+                    <p class="muted">If two objects are each in thermal equilibrium with a third, they are in equilibrium with each other.</p>
+                </div>
+                <div class="lesson-body">
+                    <div class="lesson-text">
+                        <p>Sonny will write the final lesson text. Draft focus: how temperature is defined through thermal equilibrium and why thermometers work.</p>
+                        <div class="equation">
+                            <span>Thermal equilibrium condition:</span>
+                            <strong>T<sub>A</sub> = T<sub>B</sub> = T<sub>C</sub></strong>
+                        </div>
+                        <div class="example">
+                            <h3>Worked example</h3>
+                            <p>If a metal block and a cup of water both read 22°C on the same thermometer, then they are at the same temperature. When you place the block in the water, no net heat flows.</p>
+                        </div>
+                    </div>
+                    <form class="quiz" data-quiz="zeroth" method="post" action="/__forms/quiz-zeroth" novalidate>
+                        <input type="hidden" name="lesson" value="Zeroth Law of Thermodynamics">
+                        <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                        <label class="checkbox">
+                            <input type="checkbox" name="notify_confirmed" required>
+                            I confirm notifications should be sent to yakovchaim@gmail.com
+                        </label>
+                        <fieldset class="question">
+                            <legend>1) What does thermal equilibrium mean?</legend>
+                            <label class="option" data-explanation="Thermal equilibrium means no net heat flow between objects.">
+                                <input type="radio" name="q1" value="a" required>
+                                Objects have the same mass.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Thermal equilibrium means no net heat flow between objects." data-correct="true">
+                                <input type="radio" name="q1" value="b">
+                                No net heat flows between them.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Thermal equilibrium means no net heat flow between objects.">
+                                <input type="radio" name="q1" value="c">
+                                They are the same color.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Thermal equilibrium means no net heat flow between objects.">
+                                <input type="radio" name="q1" value="d">
+                                They are both solids.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>2) The Zeroth Law lets us:</legend>
+                            <label class="option" data-explanation="It allows the definition of temperature and the use of thermometers.">
+                                <input type="radio" name="q2" value="a" required>
+                                Calculate work directly.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It allows the definition of temperature and the use of thermometers." data-correct="true">
+                                <input type="radio" name="q2" value="b">
+                                Define temperature consistently.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It allows the definition of temperature and the use of thermometers.">
+                                <input type="radio" name="q2" value="c">
+                                Eliminate all heat flow.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It allows the definition of temperature and the use of thermometers.">
+                                <input type="radio" name="q2" value="d">
+                                Break energy conservation.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>3) If A is in equilibrium with B and B with C, then:</legend>
+                            <label class="option" data-explanation="The Zeroth Law says A and C are also in equilibrium.">
+                                <input type="radio" name="q3" value="a" required>
+                                A is colder than C.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="The Zeroth Law says A and C are also in equilibrium." data-correct="true">
+                                <input type="radio" name="q3" value="b">
+                                A and C are in equilibrium.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="The Zeroth Law says A and C are also in equilibrium.">
+                                <input type="radio" name="q3" value="c">
+                                Heat flows from C to A.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="The Zeroth Law says A and C are also in equilibrium.">
+                                <input type="radio" name="q3" value="d">
+                                A must be a gas.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>4) A thermometer works because it:</legend>
+                            <label class="option" data-explanation="It reaches equilibrium with what it measures, then indicates that temperature.">
+                                <input type="radio" name="q4" value="a" required>
+                                Creates heat in the object.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It reaches equilibrium with what it measures, then indicates that temperature.">
+                                <input type="radio" name="q4" value="b">
+                                Converts mass into energy.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It reaches equilibrium with what it measures, then indicates that temperature." data-correct="true">
+                                <input type="radio" name="q4" value="c">
+                                Reaches thermal equilibrium with the object.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It reaches equilibrium with what it measures, then indicates that temperature.">
+                                <input type="radio" name="q4" value="d">
+                                Prevents energy transfer.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>5) If heat flows from X to Y, then:</legend>
+                            <label class="option" data-explanation="Heat flows from higher temperature to lower temperature." data-correct="true">
+                                <input type="radio" name="q5" value="a" required>
+                                X has higher temperature than Y.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Heat flows from higher temperature to lower temperature.">
+                                <input type="radio" name="q5" value="b">
+                                Y has higher temperature than X.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Heat flows from higher temperature to lower temperature.">
+                                <input type="radio" name="q5" value="c">
+                                X and Y have equal temperatures.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Heat flows from higher temperature to lower temperature.">
+                                <input type="radio" name="q5" value="d">
+                                Heat flows from cold to hot.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <button class="btn" type="submit">Submit quiz</button>
+                        <p class="quiz-status" role="status" aria-live="polite"></p>
+                    </form>
                 </div>
             </div>
-            <div class="hero-image-placeholder">
-                <img src="https://placehold.co/500x500/667eea/ffffff?text=Our+Services" alt="Professional services showcase" loading="lazy">
+        </section>
+
+        <section class="lesson" id="lesson-convection">
+            <div class="container">
+                <div class="lesson-header">
+                    <p class="eyebrow">Lesson 2</p>
+                    <h2>Basic Convection</h2>
+                    <p class="muted">Heat transfer by moving fluids such as air or water.</p>
+                </div>
+                <div class="lesson-body">
+                    <div class="lesson-text">
+                        <p>Sonny will write the final lesson text. Draft focus: convection currents, fluids rising when warm, and Newton's law of cooling.</p>
+                        <div class="equation">
+                            <span>Convection heat transfer:</span>
+                            <strong>q = hA(T<sub>surface</sub> - T<sub>fluid</sub>)</strong>
+                        </div>
+                        <div class="example">
+                            <h3>Worked example</h3>
+                            <p>A cup of tea at 70°C sits in a 20°C room. With hA = 5 W/°C, the initial heat loss rate is q = 5 × (70 - 20) = 250 W.</p>
+                        </div>
+                    </div>
+                    <form class="quiz" data-quiz="convection" method="post" action="/__forms/quiz-convection" novalidate>
+                        <input type="hidden" name="lesson" value="Basic Convection">
+                        <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                        <label class="checkbox">
+                            <input type="checkbox" name="notify_confirmed" required>
+                            I confirm notifications should be sent to yakovchaim@gmail.com
+                        </label>
+                        <fieldset class="question">
+                            <legend>1) Convection involves:</legend>
+                            <label class="option" data-explanation="Convection is heat transfer by bulk motion of a fluid." data-correct="true">
+                                <input type="radio" name="q1" value="a" required>
+                                Heat transfer by moving fluid.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Convection is heat transfer by bulk motion of a fluid.">
+                                <input type="radio" name="q1" value="b">
+                                Only radiation.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Convection is heat transfer by bulk motion of a fluid.">
+                                <input type="radio" name="q1" value="c">
+                                Heat transfer through solids.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Convection is heat transfer by bulk motion of a fluid.">
+                                <input type="radio" name="q1" value="d">
+                                Chemical reactions only.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>2) Warm air rises because it is:</legend>
+                            <label class="option" data-explanation="Warm air is less dense than cool air, so it rises." data-correct="true">
+                                <input type="radio" name="q2" value="a" required>
+                                Less dense.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Warm air is less dense than cool air, so it rises.">
+                                <input type="radio" name="q2" value="b">
+                                More dense.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Warm air is less dense than cool air, so it rises.">
+                                <input type="radio" name="q2" value="c">
+                                Heavier.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Warm air is less dense than cool air, so it rises.">
+                                <input type="radio" name="q2" value="d">
+                                Magnetic.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>3) In q = hAΔT, h is the:</legend>
+                            <label class="option" data-explanation="h is the convection heat transfer coefficient.">
+                                <input type="radio" name="q3" value="a" required>
+                                Height.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="h is the convection heat transfer coefficient." data-correct="true">
+                                <input type="radio" name="q3" value="b">
+                                Convection heat transfer coefficient.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="h is the convection heat transfer coefficient.">
+                                <input type="radio" name="q3" value="c">
+                                Heat capacity.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="h is the convection heat transfer coefficient.">
+                                <input type="radio" name="q3" value="d">
+                                Enthalpy.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>4) Increasing air speed around a surface usually:</legend>
+                            <label class="option" data-explanation="Faster flow increases h, so heat transfer rises." data-correct="true">
+                                <input type="radio" name="q4" value="a" required>
+                                Increases convection heat transfer.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Faster flow increases h, so heat transfer rises.">
+                                <input type="radio" name="q4" value="b">
+                                Stops convection.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Faster flow increases h, so heat transfer rises.">
+                                <input type="radio" name="q4" value="c">
+                                Has no effect.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Faster flow increases h, so heat transfer rises.">
+                                <input type="radio" name="q4" value="d">
+                                Turns convection into radiation.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>5) Natural convection is driven by:</legend>
+                            <label class="option" data-explanation="Buoyancy from density differences drives natural convection." data-correct="true">
+                                <input type="radio" name="q5" value="a" required>
+                                Buoyancy from density differences.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Buoyancy from density differences drives natural convection.">
+                                <input type="radio" name="q5" value="b">
+                                Electric motors.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Buoyancy from density differences drives natural convection.">
+                                <input type="radio" name="q5" value="c">
+                                Light waves.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Buoyancy from density differences drives natural convection.">
+                                <input type="radio" name="q5" value="d">
+                                Solid conduction.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <button class="btn" type="submit">Submit quiz</button>
+                        <p class="quiz-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
-    <section id="features" class="features" role="region" aria-labelledby="featuresHeading">
-        <h2 id="featuresHeading">Our Key Features</h2>
-        <div class="features-grid">
-            <article class="feature-card">
-                <div class="feature-icon">🚀</div>
-                <h3>Fast Performance</h3>
-                <p>Lightning-fast delivery of our services with optimized solutions tailored to your needs.</p>
-                <a href="#contact" class="btn btn-small">Learn More</a>
-            </article>
-            <article class="feature-card">
-                <div class="feature-icon">💎</div>
-                <h3>Premium Quality</h3>
-                <p>We guarantee the highest quality standards in every product and service we deliver.</p>
-                <a href="#contact" class="btn btn-small">Learn More</a>
-            </article>
-            <article class="feature-card">
-                <div class="feature-icon">🛡️</div>
-                <h3>Secure & Reliable</h3>
-                <p>Your data and trust are our priority with enterprise-grade security protocols.</p>
-                <a href="#contact" class="btn btn-small">Learn More</a>
-            </article>
-            <article class="feature-card">
-                <div class="feature-icon">🤝</div>
-                <h3>Expert Support</h3>
-                <p>Dedicated support team available 24/7 to assist with any questions or concerns.</p>
-                <a href="#contact" class="btn btn-small">Learn More</a>
-            </article>
-        </div>
-    </section>
-    <section id="testimonials" class="testimonials" role="region" aria-labelledby="testimonialsHeading">
-        <h2 id="testimonialsHeading">What Our Customers Say</h2>
-        <div class="testimonials-grid">
-            <article class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"This service has transformed our business operations. Highly recommended!"</p>
-                <p class="testimonial-author">- Sarah Johnson, CEO</p>
-            </article>
-            <article class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Exceptional quality and support. Best decision we've made for our company."</p>
-                <p class="testimonial-author">- Michael Chen, Director</p>
-            </article>
-            <article class="testimonial-card">
-                <div class="testimonial-rating">★★★★★</div>
-                <p class="testimonial-text">"Professional team with outstanding results. Worth every penny!"</p>
-                <p class="testimonial-author">- Emily Rodriguez, Manager</p>
-            </article>
-        </div>
-    </section>
-    <section id="contact" class="contact" role="region" aria-labelledby="contactHeading">
-        <h2 id="contactHeading">Contact Us</h2>
-        <p class="contact-description">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-        <form id="contactForm" method="post" action="/__forms/contact" novalidate>
-            <div class="form-group">
-                <label for="name">Name <span aria-label="required">*</span></label>
-                <input type="text" id="name" name="name" required aria-required="true" aria-describedby="nameError">
-                <span id="nameError" class="error-message"></span>
+        </section>
+
+        <section class="lesson" id="lesson-heat-pumps">
+            <div class="container">
+                <div class="lesson-header">
+                    <p class="eyebrow">Lesson 3</p>
+                    <h2>Heat Pumps</h2>
+                    <p class="muted">Move heat from a cold place to a warm place using work.</p>
+                </div>
+                <div class="lesson-body">
+                    <div class="lesson-text">
+                        <p>Sonny will write the final lesson text. Draft focus: refrigerators vs. heat pumps and coefficient of performance (COP).</p>
+                        <div class="equation">
+                            <span>Heat pump COP:</span>
+                            <strong>COP = Q<sub>hot</sub> / W</strong>
+                        </div>
+                        <div class="example">
+                            <h3>Worked example</h3>
+                            <p>If a heat pump delivers 3000 J of heat using 1000 J of work, COP = 3000/1000 = 3.</p>
+                        </div>
+                    </div>
+                    <form class="quiz" data-quiz="heat-pumps" method="post" action="/__forms/quiz-heat-pumps" novalidate>
+                        <input type="hidden" name="lesson" value="Heat Pumps">
+                        <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                        <label class="checkbox">
+                            <input type="checkbox" name="notify_confirmed" required>
+                            I confirm notifications should be sent to yakovchaim@gmail.com
+                        </label>
+                        <fieldset class="question">
+                            <legend>1) A heat pump:</legend>
+                            <label class="option" data-explanation="A heat pump moves heat from cold to hot using work." data-correct="true">
+                                <input type="radio" name="q1" value="a" required>
+                                Moves heat from cold to hot using work.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A heat pump moves heat from cold to hot using work.">
+                                <input type="radio" name="q1" value="b">
+                                Creates heat from nothing.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A heat pump moves heat from cold to hot using work.">
+                                <input type="radio" name="q1" value="c">
+                                Only cools a room.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A heat pump moves heat from cold to hot using work.">
+                                <input type="radio" name="q1" value="d">
+                                Violates the second law.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>2) COP is defined as:</legend>
+                            <label class="option" data-explanation="COP = heat delivered divided by work input.">
+                                <input type="radio" name="q2" value="a" required>
+                                Work input divided by heat delivered.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = heat delivered divided by work input." data-correct="true">
+                                <input type="radio" name="q2" value="b">
+                                Heat delivered divided by work input.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = heat delivered divided by work input.">
+                                <input type="radio" name="q2" value="c">
+                                Temperature divided by pressure.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = heat delivered divided by work input.">
+                                <input type="radio" name="q2" value="d">
+                                Mass times acceleration.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>3) A higher COP means:</legend>
+                            <label class="option" data-explanation="Higher COP means more heat moved per unit of work.">
+                                <input type="radio" name="q3" value="a" required>
+                                Less heat moved per unit of work.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Higher COP means more heat moved per unit of work." data-correct="true">
+                                <input type="radio" name="q3" value="b">
+                                More heat moved per unit of work.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Higher COP means more heat moved per unit of work.">
+                                <input type="radio" name="q3" value="c">
+                                No work is needed.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Higher COP means more heat moved per unit of work.">
+                                <input type="radio" name="q3" value="d">
+                                Heat flows from hot to cold without work.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>4) A refrigerator is:</legend>
+                            <label class="option" data-explanation="A refrigerator is a heat pump moving heat out of a cold space." data-correct="true">
+                                <input type="radio" name="q4" value="a" required>
+                                A heat pump moving heat out of a cold space.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A refrigerator is a heat pump moving heat out of a cold space.">
+                                <input type="radio" name="q4" value="b">
+                                A device that creates coldness.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A refrigerator is a heat pump moving heat out of a cold space.">
+                                <input type="radio" name="q4" value="c">
+                                A device that destroys energy.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A refrigerator is a heat pump moving heat out of a cold space.">
+                                <input type="radio" name="q4" value="d">
+                                A device that increases entropy without work.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>5) If Qhot = 5000 J and W = 1000 J, COP =</legend>
+                            <label class="option" data-explanation="COP = 5000/1000 = 5." data-correct="true">
+                                <input type="radio" name="q5" value="a" required>
+                                5.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = 5000/1000 = 5.">
+                                <input type="radio" name="q5" value="b">
+                                0.2.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = 5000/1000 = 5.">
+                                <input type="radio" name="q5" value="c">
+                                6.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="COP = 5000/1000 = 5.">
+                                <input type="radio" name="q5" value="d">
+                                50.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <button class="btn" type="submit">Submit quiz</button>
+                        <p class="quiz-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="email">Email <span aria-label="required">*</span></label>
-                <input type="email" id="email" name="email" required aria-required="true" aria-describedby="emailError">
-                <span id="emailError" class="error-message"></span>
+        </section>
+
+        <section class="lesson" id="lesson-heat-capacity">
+            <div class="container">
+                <div class="lesson-header">
+                    <p class="eyebrow">Lesson 4</p>
+                    <h2>Heat Capacity</h2>
+                    <p class="muted">How much energy is needed to change temperature.</p>
+                </div>
+                <div class="lesson-body">
+                    <div class="lesson-text">
+                        <p>Sonny will write the final lesson text. Draft focus: specific heat, units, and temperature change calculations.</p>
+                        <div class="equation">
+                            <span>Heat added:</span>
+                            <strong>Q = mcΔT</strong>
+                        </div>
+                        <div class="example">
+                            <h3>Worked example</h3>
+                            <p>Heating 2 kg of water (c = 4180 J/kg·°C) by 5°C requires Q = 2 × 4180 × 5 = 41,800 J.</p>
+                        </div>
+                    </div>
+                    <form class="quiz" data-quiz="heat-capacity" method="post" action="/__forms/quiz-heat-capacity" novalidate>
+                        <input type="hidden" name="lesson" value="Heat Capacity">
+                        <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                        <label class="checkbox">
+                            <input type="checkbox" name="notify_confirmed" required>
+                            I confirm notifications should be sent to yakovchaim@gmail.com
+                        </label>
+                        <fieldset class="question">
+                            <legend>1) In Q = mcΔT, c is:</legend>
+                            <label class="option" data-explanation="c is the specific heat capacity of the material." data-correct="true">
+                                <input type="radio" name="q1" value="a" required>
+                                Specific heat capacity.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="c is the specific heat capacity of the material.">
+                                <input type="radio" name="q1" value="b">
+                                Speed of light.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="c is the specific heat capacity of the material.">
+                                <input type="radio" name="q1" value="c">
+                                Charge.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="c is the specific heat capacity of the material.">
+                                <input type="radio" name="q1" value="d">
+                                Density.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>2) If m increases, required heat for same ΔT:</legend>
+                            <label class="option" data-explanation="More mass means more energy needed for the same temperature change." data-correct="true">
+                                <input type="radio" name="q2" value="a" required>
+                                Increases.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="More mass means more energy needed for the same temperature change.">
+                                <input type="radio" name="q2" value="b">
+                                Decreases.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="More mass means more energy needed for the same temperature change.">
+                                <input type="radio" name="q2" value="c">
+                                Stays zero.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="More mass means more energy needed for the same temperature change.">
+                                <input type="radio" name="q2" value="d">
+                                Becomes negative.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>3) Specific heat capacity measures:</legend>
+                            <label class="option" data-explanation="It measures energy needed per kg to raise temperature by 1°C." data-correct="true">
+                                <input type="radio" name="q3" value="a" required>
+                                Energy per kg per °C.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It measures energy needed per kg to raise temperature by 1°C.">
+                                <input type="radio" name="q3" value="b">
+                                Volume per time.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It measures energy needed per kg to raise temperature by 1°C.">
+                                <input type="radio" name="q3" value="c">
+                                Force per area.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="It measures energy needed per kg to raise temperature by 1°C.">
+                                <input type="radio" name="q3" value="d">
+                                Mass per length.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>4) If c is large, the material:</legend>
+                            <label class="option" data-explanation="Large c means it takes a lot of energy to change temperature." data-correct="true">
+                                <input type="radio" name="q4" value="a" required>
+                                Heats up slowly.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Large c means it takes a lot of energy to change temperature.">
+                                <input type="radio" name="q4" value="b">
+                                Heats up instantly.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Large c means it takes a lot of energy to change temperature.">
+                                <input type="radio" name="q4" value="c">
+                                Always stays cold.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Large c means it takes a lot of energy to change temperature.">
+                                <input type="radio" name="q4" value="d">
+                                Changes temperature without energy.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>5) Units of Q in Q = mcΔT are:</legend>
+                            <label class="option" data-explanation="Q is energy measured in joules (J)." data-correct="true">
+                                <input type="radio" name="q5" value="a" required>
+                                Joules (J).
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Q is energy measured in joules (J).">
+                                <input type="radio" name="q5" value="b">
+                                Watts (W).
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Q is energy measured in joules (J).">
+                                <input type="radio" name="q5" value="c">
+                                Newtons (N).
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Q is energy measured in joules (J).">
+                                <input type="radio" name="q5" value="d">
+                                Pascals (Pa).
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <button class="btn" type="submit">Submit quiz</button>
+                        <p class="quiz-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="message">Message <span aria-label="required">*</span></label>
-                <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="messageError"></textarea>
-                <span id="messageError" class="error-message"></span>
+        </section>
+
+        <section class="lesson" id="lesson-radiation">
+            <div class="container">
+                <div class="lesson-header">
+                    <p class="eyebrow">Lesson 5</p>
+                    <h2>Basic Radiation</h2>
+                    <p class="muted">Heat transfer by electromagnetic waves.</p>
+                </div>
+                <div class="lesson-body">
+                    <div class="lesson-text">
+                        <p>Sonny will write the final lesson text. Draft focus: thermal radiation, emissivity, and the Stefan-Boltzmann law.</p>
+                        <div class="equation">
+                            <span>Radiation heat transfer:</span>
+                            <strong>Q = εσA(T<sup>4</sup> - T<sub>sur</sub><sup>4</sup>)</strong>
+                        </div>
+                        <div class="example">
+                            <h3>Worked example</h3>
+                            <p>A black plate (ε ≈ 1) with area 0.2 m² at 400 K in a 300 K room radiates energy proportional to (400⁴ - 300⁴).</p>
+                        </div>
+                    </div>
+                    <form class="quiz" data-quiz="radiation" method="post" action="/__forms/quiz-radiation" novalidate>
+                        <input type="hidden" name="lesson" value="Basic Radiation">
+                        <input type="hidden" name="notify_email" value="yakovchaim@gmail.com">
+                        <label class="checkbox">
+                            <input type="checkbox" name="notify_confirmed" required>
+                            I confirm notifications should be sent to yakovchaim@gmail.com
+                        </label>
+                        <fieldset class="question">
+                            <legend>1) Radiation is heat transfer by:</legend>
+                            <label class="option" data-explanation="Radiation transfers energy via electromagnetic waves." data-correct="true">
+                                <input type="radio" name="q1" value="a" required>
+                                Electromagnetic waves.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation transfers energy via electromagnetic waves.">
+                                <input type="radio" name="q1" value="b">
+                                Fluid motion only.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation transfers energy via electromagnetic waves.">
+                                <input type="radio" name="q1" value="c">
+                                Direct contact only.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation transfers energy via electromagnetic waves.">
+                                <input type="radio" name="q1" value="d">
+                                Chemical mixing.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>2) A perfect blackbody has emissivity:</legend>
+                            <label class="option" data-explanation="A perfect blackbody has emissivity ε = 1." data-correct="true">
+                                <input type="radio" name="q2" value="a" required>
+                                1.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A perfect blackbody has emissivity ε = 1.">
+                                <input type="radio" name="q2" value="b">
+                                0.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A perfect blackbody has emissivity ε = 1.">
+                                <input type="radio" name="q2" value="c">
+                                10.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="A perfect blackbody has emissivity ε = 1.">
+                                <input type="radio" name="q2" value="d">
+                                -1.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>3) Radiation can occur in:</legend>
+                            <label class="option" data-explanation="Radiation can travel through a vacuum." data-correct="true">
+                                <input type="radio" name="q3" value="a" required>
+                                A vacuum.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation can travel through a vacuum.">
+                                <input type="radio" name="q3" value="b">
+                                Only liquids.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation can travel through a vacuum.">
+                                <input type="radio" name="q3" value="c">
+                                Only solids.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Radiation can travel through a vacuum.">
+                                <input type="radio" name="q3" value="d">
+                                Only air.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>4) In Q = εσAT⁴, σ is:</legend>
+                            <label class="option" data-explanation="σ is the Stefan-Boltzmann constant." data-correct="true">
+                                <input type="radio" name="q4" value="a" required>
+                                The Stefan-Boltzmann constant.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="σ is the Stefan-Boltzmann constant.">
+                                <input type="radio" name="q4" value="b">
+                                Surface roughness.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="σ is the Stefan-Boltzmann constant.">
+                                <input type="radio" name="q4" value="c">
+                                Thermal conductivity.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="σ is the Stefan-Boltzmann constant.">
+                                <input type="radio" name="q4" value="d">
+                                Density.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="question">
+                            <legend>5) If temperature doubles, T⁴ becomes:</legend>
+                            <label class="option" data-explanation="Doubling T makes T⁴ increase by 2⁴ = 16 times." data-correct="true">
+                                <input type="radio" name="q5" value="a" required>
+                                16 times larger.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Doubling T makes T⁴ increase by 2⁴ = 16 times.">
+                                <input type="radio" name="q5" value="b">
+                                2 times larger.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Doubling T makes T⁴ increase by 2⁴ = 16 times.">
+                                <input type="radio" name="q5" value="c">
+                                4 times larger.
+                                <span class="explanation"></span>
+                            </label>
+                            <label class="option" data-explanation="Doubling T makes T⁴ increase by 2⁴ = 16 times.">
+                                <input type="radio" name="q5" value="d">
+                                8 times larger.
+                                <span class="explanation"></span>
+                            </label>
+                        </fieldset>
+                        <button class="btn" type="submit">Submit quiz</button>
+                        <p class="quiz-status" role="status" aria-live="polite"></p>
+                    </form>
+                </div>
             </div>
-            <input type="text" name="_hp" style="display:none" autocomplete="off" tabindex="-1">
-            <button type="submit" id="submitBtn" class="btn btn-primary" aria-busy="false">Send Message</button>
-        </form>
-        <div id="responseMessage" role="alert"></div>
-    </section>
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Quick Links</h3>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container footer-grid">
+            <div>
+                <h3>HeatLearn</h3>
+                <p class="muted">Free, friendly lessons on heat transfer and thermodynamics.</p>
+            </div>
+            <div>
+                <h3>Lessons</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#lesson-zeroth">Zeroth Law</a></li>
+                    <li><a href="#lesson-convection">Basic Convection</a></li>
+                    <li><a href="#lesson-heat-pumps">Heat Pumps</a></li>
+                    <li><a href="#lesson-heat-capacity">Heat Capacity</a></li>
+                    <li><a href="#lesson-radiation">Basic Radiation</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="https://twitter.com" aria-label="Twitter" target="_blank" rel="noopener noreferrer">Twitter</a>
-                    <a href="https://facebook.com" aria-label="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
-                    <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </div>
-            </div>
-            <div class="footer-section">
+            <div>
                 <h3>Contact</h3>
-                <ul>
-                    <li>📍 123 Business St, City, State 12345</li>
-                    <li>📧 hello@mysite.com</li>
-                    <li>📞 (555) 123-4567</li>
-                </ul>
+                <p class="muted">Questions? Email the team at yakovchaim@gmail.com.</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; <span id="year">2026</span> My Site. All rights reserved.</p>
-        </div>
+        <p class="footer-note">&copy; <span id="year"></span> HeatLearn. All rights reserved.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
